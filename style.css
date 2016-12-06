@@ -1,0 +1,95 @@
+body{background-image:url(images/berries.jpg);
+  	background-repeat:no-repeat;
+  	background-size:cover;}
+
+h2{font-size:24px;
+   margin-top:5%;}
+
+p{font-size:14px;
+  line-height:22px;
+  padding-top:2%;
+  padding-bottom:2%;}
+
+h3{color:#fff;
+	font-size:16px;}
+
+nav{padding-top:2%;}
+
+nav ul li a{color:#BA996F;}
+nav ul li{display:inline;
+		  padding-left:5%;}
+nav ul{text-decoration:none;}
+
+.clear{clear:both;}
+
+.header{text-align:center;
+		background-color:#5C2E18;
+		padding-top:2%;
+		padding-bottom:2%;}
+.hero{background-image:url(images/);
+	  background-repeat:no-repeat;
+	  background-size:cover;
+	  height:250px;
+	  margin-bottom:2%;}
+
+.hero{padding-top:5%;
+	  text-align:center;
+	  margin:0 auto;
+	  color:#fff;
+	}
+
+#logo{padding-left:7%;}
+
+.cart{background-color:#BA996F;}
+
+.hero p{
+		margin:0 auto;
+		font-size:18px;
+		width:60%;
+		line-height:25px;
+		font-weight:thin;}
+
+.top{border-top:solid 5px #000;
+	 padding:1%;
+	 padding-top:2%;}
+.bottom{border-bottom:solid 5px #000;
+		padding:1%;}
+
+  .chocolate{background-color:rgba(92,46,24,.8);}
+
+  .backcolor{background-color:#BA996F;
+  			
+  			height:90%;
+  			padding:2%;}
+
+.backcolor h3{float:left;}
+.backcolor h4{float:right;
+			   margin-right:5%;
+			   padding:2%;
+			   font-size:18px;
+			   background-color:#fff;}
+
+.orderform{margin-top:2%;
+		   background-color:#BA996F;
+		  margin-bottom:10%;}
+
+.orderform p{font-size:20px;}
+
+form{padding-bottom:5%;}
+
+.price{text-align:right;}
+
+.add{background-color:#A61015;}
+
+.padding{padding-bottom:2%;}
+
+.total p{font-size:24px;
+		color:#fff;}
+
+footer{padding-top:10%;}
+
+button{font-size:12px;
+	   background-color:burgundy;}
+
+#submit{margin-top:5%;
+		margin-bottom:5%;}

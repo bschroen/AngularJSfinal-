@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<div class="col-xs-12 header">
+<div class="pull-right cart"><img src="images/tray.png" width="30px"></div>
+<div id="logo"><img src="images/logo.png" width="100px"></div>
+<nav>
+<ul>
+<li><a href="index.html">HOME</a></li>
+<li><a href="index.html">MENUS</a></li>
+<li><a href="index.html">LOCATIONS</a></li>
+<li><a href="index.html">CONTACT</a></li>
+</ul>
+</nav>
+</div>
+<div ng-app="myApp" ng-controller="myCtrl">
+<div class="col-xs-12 hero">
+<h1>{{title}}</h1>
+<p>{{ promo }}</p>
+</div>
+
+<div ng-repeat="product in products">
+			<div class="col-xs-12 top padding chocolate">
+				<div class="col-sm-6">
+					<img src="images/chocolate.jpg" width="100%">
+				</div>
+				<div class="col-sm-6">
+					<div class="backcolor">
+						<center><h2>{{product.name}}</h2></center>
+						<p>{{product.description}} </p>
+						<h3>{{product.price | currency}}</h3>
+						<h4>
+						<button type="button" ng-click="add(product);">Add</button>
+            			<button type="button" ng-click="remove(product);">Remove</button>
+            			{{product.qty}}</h4>
+						<div class="clear"></div>
+					</div>
+
+				</div>
+			</div>
+	</div>
+	<div ng-controller="CartCtrl">
+			<div class="total">
+				<p>Total:{{product.total | currency}} </p>
+				</div>
+	</div>
+
+
+<div class="orderform col-xs-8 col-xs-offset-2">
+<div ng-app="">
+  <form>
+  <center><h1>Information</h1></center>
+  <center><p>Thank you {{firstName}} for choosing 'The Table'!</p></center>
+  <div class="col-xs-6">
+
+  <div ng-app="" ng-init="firstName=''">
+  <label>Name: <input type="text" ng-model="firstName"></label><br />
+  </div>
+  <label>Phone: <input type="text"></label><br />
+  </div>
+  <div class="col-xs-6">
+    Pick up or delivery:
+    <label>Pick up <input type="checkbox"></label>
+    <label>Delivery <input type="checkbox" ng-model="myVar"></label>
+  </form>
+  <h5 ng-show="myVar">Delivery Information
+  <form>
+  <label>Address: <input type="text" value="text"></label>
+  <label>Additional Notes: <input type="text" value="text"></label>
+  </form></h5>
+  <button id="submit">Submit</button>
+</div>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.title = "Enjoy a dessert";
+    $scope.promo = "As the air outside turns brisk, cozy up inside with a soul-soothing dessert without much waiting!";
+    $scope.products = [
+        {
+            'name': 'Chocolate',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum turpis sit amet rutrum tristique. Donec commodo lectus ac ante venenatis suscipit.',
+            'price': 10.50,
+            'qty': 0,
+        },
+        {
+            'name': 'Strawberry',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum turpis sit amet rutrum tristique. Donec commodo lectus ac ante venenatis suscipit.',
+            'price': 20,
+            'qty': 0,
+        },
+        {
+        	'name': 'Strawberry',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum turpis sit amet rutrum tristique. Donec commodo lectus ac ante venenatis suscipit.',
+            'price': 20,
+            'qty': 0,
+
+        }
+    ];
+
+ // Fire event to add
+    $scope.add = function(product) {
+        product.qty++;
+        $rootScope.$broadcast('addProduct', product.price);
+    }
+    
+    // Fire event to remove
+    $scope.remove = function(product) {
+        if(product.qty > 0) {
+            product.qty--;
+            $rootScope.$broadcast('removeProduct', product.price);
+        }
+    }
+    
+
+});
+
+app.controller('CartCtrl', function($scope) {
+    $scope.total = 0;
+    
+    // Catch the event to add
+    $scope.$on('addProduct', function(event, data) {
+       $scope.total += data;
+    });
+    
+    // Catch the event to remove
+    $scope.$on('removeProduct', function(event, data) {
+        $scope.total -= data;   
+    });
+});
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
